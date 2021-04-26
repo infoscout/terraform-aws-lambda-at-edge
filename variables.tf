@@ -20,12 +20,12 @@ variable lambda_code_source_dir {
   description = "An absolute path to the directory containing the code to upload to lambda"
 }
 
-variable "use_lambda_layer" {
+variable use_lambda_layer {
   description = "Determine wether to use lambda layer"
   default     = false
 }
 
-variable "lambda_layer_name" {
+variable lambda_layer_name {
   description = "Name of lambda Layer"
   default     = "lambda_layer"
 }
