@@ -7,7 +7,7 @@
  * In the future, we may want to source our code from an s3 bucket instead of a local zip.
  */
 data archive_file zip_file_for_lambda {
-  count       = var.lambda_code_zip ? 0 : 1
+  count       = var.use_zip_for_lambda_code ? 0 : 1
   type        = "zip"
   output_path = "lambda_code.zip"
 
@@ -44,8 +44,8 @@ data archive_file zip_file_for_lambda {
 resource aws_s3_bucket_object artifact {
   bucket = var.s3_artifact_bucket
   key    = "${var.name}.zip"
-  source = var.lambda_code_zip ? var.lambda_code_zip : data.archive_file.zip_file_for_lambda[0].output_path
-  etag   = var.lambda_code_zip ? filemd5(var.lambda_code_zip) : filemd5(data.archive_file.zip_file_for_lambda[0].output_path)
+  source = var.use_zip_for_lambda_code ? var.lambda_code_zip : data.archive_file.zip_file_for_lambda[0].output_path
+  etag   = var.use_zip_for_lambda_code ? filemd5(var.lambda_code_zip) : filemd5(data.archive_file.zip_file_for_lambda[0].output_path)
   tags   = var.tags
 }
 

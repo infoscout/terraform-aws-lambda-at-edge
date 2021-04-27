@@ -16,6 +16,12 @@ variable tags {
   default     = {}
 }
 
+variable use_zip_for_lambda_code {
+  description = "Wether to use zip for lambda code"
+  default     = false
+}
+
+// Either lambda_code_source_dir or lambda_code_zip must be passed
 variable lambda_code_source_dir {
   description = "An absolute path to the directory containing the code to upload to lambda"
   default     = null
