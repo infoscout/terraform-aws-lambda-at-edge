@@ -44,8 +44,8 @@ data archive_file zip_file_for_lambda {
 resource aws_s3_bucket_object artifact {
   bucket = var.s3_artifact_bucket
   key    = "${var.name}.zip"
-  source = var.lambda_code_zip ? var.lambda_code_zip : data.archive_file.zip_file_for_lambda.output_path
-  etag   = var.lambda_code_zip ? filemd5(var.lambda_code_zip) : filemd5(data.archive_file.zip_file_for_lambda.output_path)
+  source = var.lambda_code_zip ? var.lambda_code_zip : data.archive_file.zip_file_for_lambda[0].output_path
+  etag   = var.lambda_code_zip ? filemd5(var.lambda_code_zip) : filemd5(data.archive_file.zip_file_for_lambda[0].output_path)
   tags   = var.tags
 }
 
