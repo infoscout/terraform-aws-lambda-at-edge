@@ -18,10 +18,11 @@ variable tags {
 
 variable lambda_code_source_dir {
   description = "An absolute path to the directory containing the code to upload to lambda"
+  default     = null
 }
 
-variable lambda_layers {
-  description = "Lambda layers"
+variable lambda_code_zip {
+  description = "An absolute path to the zip file containing the code to upload to lambda"
   default     = null
 }
 
